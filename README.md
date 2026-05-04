@@ -1,75 +1,62 @@
-# React + TypeScript + Vite
+# dhruva.dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site for Dhruva Patil — Software Engineer, AI Engineer, and Mobile App Developer based in Halifax, Canada.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Framework**: React 19 + TypeScript
+- **Build tool**: Vite 8
+- **Styling**: Plain CSS with CSS custom properties (no UI library)
+- **Compiler**: Babel with React Compiler plugin
 
-## React Compiler
+## Project Structure
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── main.tsx                  # App entry point, layout, scroll/cursor effects
+├── data.ts                   # All portfolio content (experience, skills, projects)
+├── index.css                 # Global styles and design tokens
+└── components/
+    ├── Nav.tsx               # Navigation bar with theme toggle and resume link
+    ├── Hero.tsx              # Landing section
+    ├── About.tsx             # About section
+    ├── Experience.tsx        # Work and education timeline
+    ├── Skills.tsx            # Skills grid by category
+    ├── Projects.tsx          # Project cards
+    ├── Contact.tsx           # Contact section
+    ├── skill-icons.tsx       # SVG icons for every skill (simple-icons paths)
+    └── ui-icons.tsx          # General UI icons (github, mail, arrow, etc.)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173).
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server with HMR |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+## Customisation
+
+All content lives in `src/data.ts` — edit the `PORTFOLIO_DATA` object to update:
+
+- **Personal info**: name, email, GitHub, LinkedIn
+- **Experience**: roles, companies, descriptions, tags, app store links
+- **Skills**: categories and individual skills (icons are matched by name in `skill-icons.tsx`)
+- **Projects**: title, description, tags, GitHub URL
+
+To add a skill icon, add an entry to the `SkillIcons` record in `src/components/skill-icons.tsx` with the key matching the skill name in `data.ts`.
+
+## License
+
+MIT
